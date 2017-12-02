@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/codeuniversity/group14_p3/issues"
   },
-  "homepage": "https://github.com/codeuniversity/group14_p3#readme"
+  "homepage": "https://github.com/codeuniversity/group14_p3#readme",
+  "devDependencies": {
+    "firebase-client": "^0.1.1",
+    "express": "^4.16.2"
+  }
 }
