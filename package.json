@@ -1,0 +1,19 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeuniversity/group14_p3.git"
+  },
+  "author": "elias khattar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeuniversity/group14_p3/issues"
+  },
+  "homepage": "https://github.com/codeuniversity/group14_p3#readme"
+}
