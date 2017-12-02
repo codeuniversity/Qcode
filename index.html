@@ -15,5 +15,24 @@
     <div> test</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
     <script src="https://daks2k3a4ib2z.cloudfront.net/5a22a403816f0a00016c65b1/js/webflow.61705ef10.js" type="text/javascript"></script>
+
+<div>
+<input type="button" id="add" value="Add New">
+<ol id="list_item">
+</ol>
+</div>
+
+<script> 
+document.getElementById("add").onclick  = function() {
+    var node = document.createElement("Li");
+    var text = document.getElementById("user_input").value; 
+    var textnode=document.createTextNode(text);
+    node.appendChild(textnode);
+    document.getElementById("list_item").appendChild(node);
+}
+ </script>
+
 </body>
 </html>
+
+
