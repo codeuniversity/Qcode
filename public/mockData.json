@@ -1,0 +1,16 @@
+{
+    "questions": {
+        "q1": {
+            "text":"What does X mean?",
+            "vote": 0
+        },
+        "q2": {
+            "text":"Can you explain W?",
+            "vote": 2
+        },
+        "q3": {
+            "text":"What is H?",
+            "vote": 1
+        }
+    }
+}
