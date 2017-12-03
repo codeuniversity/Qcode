@@ -1,10 +1,12 @@
 const express = require('express')
-var firebase = require("firebase")
 const app = express()
-console.log("test")
-app.get('/', (req, res) => res.send('Hello World!'))
+var firebase = require("firebase")
 
-app.listen(process.env.PORT ,process.env.IP, () => console.log('Example app listening on port 3000!'))
+app.use(express.static('./public'))
+app.get('/', (req, res) => res.sendFile('/index.html'))
+
+app.listen(process.env.PORT ,process.env.IP, () => console.log('App started.'))
+
 
 var config = {
     apiKey: "AIzaSyDigiT3cpa-qZL8lFQWA5dqRD_Q8W5cDos",
@@ -16,3 +18,5 @@ var config = {
   
    // Get a reference to the database service
   var database = firebase.database();
+  
+ 
