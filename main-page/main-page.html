@@ -1,0 +1,14 @@
+<!--this page will show up after signing in success-->
+<div ng-controller="mainPageController">
+     <div>Welcome {{user.name}}! <button ng-click="logout()">Logout</button></div>
+    <h2>All Events and Workshops</h2>
+    <div>
+        <input type="text" ng-model='newEventTitle' placeholder="New event title..."/>
+        <button ng-click="addEvent()">Add event</button>
+    </div>
+    <div>
+        <div ng-repeat="event in events">
+            <a ng-href="#/event/{{$index}}"> {{event.title}} by {{event.username}}</a>
+        </div>
+    </div>
+</div>
