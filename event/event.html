@@ -1,0 +1,13 @@
+<div ng-controller="eventPageController">
+    <a href="#/main">Back to main page</a>
+    <h1>Event Name</h1>
+    <div>
+        <input type="text" ng-model="newQuestion" placeholder="Write a question..."/>
+        <button ng-click="addQuestion()">Add Question</button>
+    </div>
+    <div>
+        <div ng-repeat="question in event.questions">{{question.username}}: {{question.text}}</div>
+        <div ng-if="!event.questions.length">There are no questions in this event</div>
+    </div>
+
+</div>
