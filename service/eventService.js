@@ -1,4 +1,5 @@
 angular.module("p3").service("eventService", function(){
+  
     var data = {
         "events": [
                 {
@@ -7,11 +8,11 @@ angular.module("p3").service("eventService", function(){
                 "questions": [
                     {
                         "text": "skjdhskahdaksdj",
-                        "username": "u1"
+                        "votes": 0
                     },
                     {
                         "text": "sjkdhskljdhs?",
-                        "username": "u2"
+                        "votes": 2
                     }
                 ]
             },
