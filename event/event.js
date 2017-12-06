@@ -14,13 +14,12 @@ angular.module('p3')
 
         var newQuestion = {
             text: $scope.newQuestion,
-            username: currentUser.name
+            votes: 0
         };
 
         $scope.event.questions.push(newQuestion);
     
         $scope.newQuestion = '';
     }
-
-
+    
 });
