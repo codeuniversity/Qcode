@@ -17,7 +17,7 @@ angular.module('p3')
             questions: []
         };
 
-        $scope.events.push(newEvent);
+        $scope.events.$add(newEvent);
 
         $scope.newEventTitle = '';
     }

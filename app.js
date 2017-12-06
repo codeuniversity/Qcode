@@ -1,4 +1,7 @@
-angular.module('p3', ['ngRoute'])
+angular.module('p3', ['ngRoute', 'firebase'])
+// .constant('fb'), {
+//  url: 'https://project14-3.firebaseio.com'
+// }
 .config(function($routeProvider){
         $routeProvider.
             when('/login', {
@@ -11,6 +14,6 @@ angular.module('p3', ['ngRoute'])
                 templateUrl: 'event/event.html'
             }).
             otherwise({
-                redirectTo: '/main-page'
+                redirectTo: '/login'
             });
 });
