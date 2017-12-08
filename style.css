@@ -46,3 +46,54 @@ body {
     font-size: 20px;
     background-color: white;
 }
+
+#event-btn {
+    font-size: 35px;
+    color: #fff;
+    border: none;
+    background: transparent;
+    background: linear-gradient(to right, #1BCE7C, #21A9E3);
+    float: right;
+    padding: 9px 20px 9px 20px;
+}
+
+#firstHeadline {
+    padding-bottom: 10px;
+}
+
+#event-new {
+    float: left;
+    padding: 15px 30px 15px 20px;
+    border: 2px solid rgb(95, 190, 172);
+    width: calc(100% - 76px);
+}
+
+#event {
+    width: 100%;
+    position: fixed;
+    padding: 40px 28px 10px 28px;
+}
+
+.secondHeadline {
+    padding: 5px 28px 10px 28px;
+}
+
+.recentChannels {
+    padding: 5px 28px 10px 28px;
+    float: left;
+    padding: 15px 30px 15px 20px;
+    border: 2px solid rgb(95, 190, 172);
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+#logout {
+    float: right;
+    margin: 10px;
+}
+.all-events {
+    padding-top: 160px;
+}
+

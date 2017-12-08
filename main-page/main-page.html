@@ -1,13 +1,20 @@
 <!--this page will show up after signing in success-->
 <div ng-controller="mainPageController">
-     <div>Welcome {{user.name}}! <button ng-click="logout()">Logout</button></div>
-    <h2>All Events and Workshops</h2>
-    <div>
-        <input type="text" ng-model='newEventTitle' placeholder="New event title..."/>
-        <button ng-click="addEvent()">Add event</button>
+     <div  id='logout'>Welcome {{user.name}}! <button ng-click="logout()">Logout</button></div>
+    <div id="firstHeadline">
+         <h2>Create new Channel:</h2>
     </div>
-    <div>
-        <div ng-repeat="event in events">
+    <div id='event'>
+        <div id="event-new">
+                        <input type="text" ng-model='newEventTitle' placeholder="Type the name..."/>
+                    </div>
+        <button id='event-btn'  ng-click="addEvent()">enter</button>
+    </div>
+    <div class='all-events'>
+        <div class="secondHeadline">
+            <h2>Recent Channels:</h2>
+        </div>
+        <div class="recentChannels" ng-repeat="event in events">
             <a ng-href="#/event/{{event.$id}}"> {{event.title}} by {{event.username}}</a>
         </div>
     </div>
