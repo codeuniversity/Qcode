@@ -10,6 +10,9 @@ angular.module('p3', ['ngRoute', 'firebase'])
             when('/main-page', {
                 templateUrl: 'main-page/main-page.html'
             }).
+            when('/main', {
+                templateUrl: 'main-page/main-page.html'
+            }).
             when('/event/:eventId', {
                 templateUrl: 'event/event.html'
             }).
