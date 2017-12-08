@@ -1,6 +1,7 @@
 angular.module('p3').service('userService', function(){
     var user = {
-        name: 'tester'
+        name: 'tester',
+        votes: []
     };
 
     this.getLoggedInUser = function(){

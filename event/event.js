@@ -11,43 +11,61 @@ angular.module('p3')
   
     
     $scope.addVote = function(q_text, curr_votes){
-        console.log(curr_votes)
-        console.log("Adding a vote!")
-        console.log(q_text)
-        var new_votes = curr_votes + 1;
-        // iterate through the questions until find the one with matching text
-        for(q_id in $scope.event.questions){
-            if(q_text == $scope.event.questions[q_id].text){
-                console.log("FOUND MATCH");
-                // already pushed to the app; need to push to firebase now
-                var updatedQuestion = {
-                    "text": q_text,
-                    "votes": new_votes
-                }
-                var updateEvent = {};
-                updateEvent["title"] = $scope.event.title;
-                updateEvent["username"] = $scope.event.username;
-                updateEvent["questions"] = $scope.event.questions;
-                updateEvent["questions"][q_id] = updatedQuestion;
-                console.log(updateEvent)
-                var sendToFB = angular.toJson(updateEvent.questions);
-                var finalSend = JSON.parse(sendToFB)
-                var new_dict = {};
-                for( item in finalSend){
-                    console.log(item);
-                    new_dict[item] = finalSend[item]
-                }
-                console.log(new_dict)
-                updateEvent.questions = new_dict;
-                console.log(updateEvent)
-       
-                firebase.database().ref('/events/' + eventId).set(updateEvent)
-                
-                break;
-            }
+        var keep_going = true;
+        // limit each user to 1 vote per question
+        // get the curent user; name of the current user via currentUser.name
+        var currentUser = userService.getLoggedInUser();
+        console.log(currentUser.votes)
+        if($.inArray(q_text, currentUser.votes) == -1){
+            currentUser.votes.push(q_text)
+        } else {
+            keep_going = false;
         }
-        return new_votes;
-        // return curr_votes ++;
+        
+        console.log(currentUser.votes)
+        
+        if(keep_going){
+            // start add vote
+            console.log(curr_votes)
+            console.log("Adding a vote!")
+            console.log(q_text)
+            var new_votes = curr_votes + 1;
+            // iterate through the questions until find the one with matching text
+            for(q_id in $scope.event.questions){
+                if(q_text == $scope.event.questions[q_id].text){
+                    console.log("FOUND MATCH");
+                    // already pushed to the app; need to push to firebase now
+                    var updatedQuestion = {
+                        "text": q_text,
+                        "votes": new_votes
+                    }
+                    var updateEvent = {};
+                    updateEvent["title"] = $scope.event.title;
+                    updateEvent["username"] = $scope.event.username;
+                    updateEvent["questions"] = $scope.event.questions;
+                    updateEvent["questions"][q_id] = updatedQuestion;
+                    console.log(updateEvent)
+                    var sendToFB = angular.toJson(updateEvent.questions);
+                    var finalSend = JSON.parse(sendToFB)
+                    var new_dict = {};
+                    for( item in finalSend){
+                        console.log(item);
+                        new_dict[item] = finalSend[item]
+                    }
+                    console.log(new_dict)
+                    updateEvent.questions = new_dict;
+                    console.log(updateEvent)
+           
+                    firebase.database().ref('/events/' + eventId).set(updateEvent)
+                    
+                    break;
+                }
+            }
+            return new_votes;
+        } else {
+            alert("You have already voted for this item.")
+            return curr_votes;
+        }
     }
 
     $scope.addQuestion= function(){ 
@@ -68,25 +86,17 @@ angular.module('p3')
         for (key in $scope.event) {
             if (!$scope.event.hasOwnProperty(key)) continue;
             console.log("KEY: " + key);
-            // console.log($scope.event[key]);
             if(key == "questions"){
-                // console.log($scope.event[key])
                 console.log("Questions present")
                 var length = $scope.event[key].length
                 var count = 0, i = length;
                 while (i--) {
                     if (typeof $scope.event[key][i] === "undefined") {count ++;}
                 }
-                // console.log(length)
-                // console.log("empties: " + count)
                 question_count = length - count;
                 var set_count = true;
-                // break;
             } else {
-                // $scope.event["questions"]= {};
-                // console.log("Questions not found")
                 if(set_count == false){
-                    // $scope.event["questions"]= {};
                     question_count = 0;
                 }
                 
