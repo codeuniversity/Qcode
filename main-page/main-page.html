@@ -28,7 +28,7 @@
         </div>
         <div class='all-events' id='all-events'>
             <div class="recentChannels" ng-repeat="event in events">
-                <a ng-href="#/event/{{event.$id}}"> {{event.title}} by {{event.username}}</a>
+                <a ng-href="#/event/{{event.$id}}"> {{event.title}}</a>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
     // mobile!
         contentPlacement = $('#event').height() + logoPlacement + 15;
     } else {
-        contentPlacement = $('#event').height() + logoPlacement*3;
+        contentPlacement = $('#event').height() + logoPlacement+ 80;
     }
     
     

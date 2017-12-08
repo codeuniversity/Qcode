@@ -4,8 +4,23 @@ angular.module('p3')
     $scope.user = userService.getLoggedInUser();
 
     $scope.newEventTitle = '';
-
-    $scope.events = eventService.getAllEvents();
+    
+    var original_events = eventService.getAllEvents();
+    var sorted_events;
+    console.log(original_events)
+   original_events.$loaded().then(function() {
+       var new_list = [];
+       angular.forEach(original_events, function(value,key){
+        //   new_list.push({ id: key, data: value})
+        new_list[key] = value;
+       })
+       console.log(new_list.reverse())
+       console.log(eventService.getAllEvents())
+       sorted_events = new_list.sort()
+       $scope.events = sorted_events
+       return sorted_events
+    });
+    
 
     $scope.addEvent = function(){  
         if(!$scope.newEventTitle){
@@ -16,8 +31,11 @@ angular.module('p3')
             username: $scope.user.name,            
             questions: []
         };
-
-        $scope.events.$add(newEvent);
+ 
+        firebase.database().ref('/events/').push(newEvent)
+        // update $scope.events
+        console.log(eventService.getAllEvents());
+        window.location.reload()
 
         $scope.newEventTitle = '';
     }
