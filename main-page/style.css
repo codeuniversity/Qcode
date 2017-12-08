@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo{
+    text-align: center;
+    width: 100%;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+hr {
+    height: 1px;
+    background: #cecece;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.mainpart {
+    width: 100%;
+}
+
+.logout {
+    float: right;
+    margin: 10px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.name {
+    padding: 0px 28px 20px 28px;
+    font-size: 14px;
+    width: 100%;
+    position: fixed;
+    text-align: center;
+}
+
+.newEvent {
+    width: 100%;
+    position: fixed;
+    padding: 40px 28px 10px 28px;
+}
+
+.allEvents {
+    padding-top: 160px;
+}
+
+.event {
+    float: left;
+    padding: 15px 30px 15px 20px;
+    border: 2px solid rgb(95, 190, 172);
+    width: calc(100% - 76px);
+}
+
+.add {
+    background: linear-gradient(to right, #1BCE7C, #21A9E3);
+    float: right;
+    padding: 9px 20px 9px 20px;
+}
+
+.ion-arrow-right-a {
+    font-size: 35px;
+    color: #fff;
+    border: none;
+    background: transparent;
+}
+
+.secondHeadline {
+    padding: 5px 28px 10px 28px;
+}
+.recentChannels {
+    padding: 5px 28px 10px 28px;
+}
+
+.enter {
+    float: left;
+    padding: 15px 30px 15px 20px;
+    border: 2px solid rgb(95, 190, 172);
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+::placeholder {
+    font-size: 14px;
+}
+
+.firstHeadline {
+    padding-bottom: 10px;
+}

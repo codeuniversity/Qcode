@@ -1,0 +1,64 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+
+    </head>
+
+    <body>
+        
+        <header>
+            <div class="head">
+                <section class="width">
+                        <div class="back">
+                            <a class="goback" href="#/main">
+                                <div class="ion-arrow-left-a"></div>
+                            </a>
+                        </div>
+                        <div class="logo">
+                            <img src="Q.CODE%20LOGO.png" alt="logo" style="width: 200px; height: auto;">
+                        </div>
+                        <div class="headline">
+                         <p><b>{{event.title}}</b></p>
+                        </div>
+                </section>
+            </div>
+        </header>
+            
+        <section class="mainpart">
+            <div ng-controller="eventPageController"> 
+                <div class="newQuestion1">
+                    <div>
+                        <input class="question" type="text" ng-model="newQuestion" placeholder="Type new question..."/>
+                    </div>
+                    <div class="add">
+                        <button class="ion-arrow-right-a" ng-click="addQuestion()"></button>
+                    </div>
+                </div>
+            
+                <div class="allQuestions">
+                    <div class="border">
+                        <div class="content" ng-repeat="question in event.questions">
+                            <div class="content2">{{question.text}}</div>
+                            
+                            <div class="likes">
+                                <div class="icon ion-android-arrow-dropup"></div>
+                                <div class="upvote">888</div>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                    <div style="clear: both;"></div>
+
+                
+                    <div class="noQuestions" ng-if="!event.questions.length">There are no questions in this event</div>
+                </div>
+            </div>
+        </section>
+    
+    </body>
+    
+</html>
