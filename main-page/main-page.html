@@ -3,32 +3,58 @@
     <div class='logo'>
         <img id="main-logo" src="logo.png" alt="logo" style="width: 150px; height: auto;" />
     </div>
-
-    <div id='event'>
-        <div id='logout'>
-            <div style="float:left;width:50%;">Welcome {{user.name}}!</div>
-            <div style="float:right;width:50%;text-align:right">
-                <button id="logout-btn" ng-click="logout()">Logout</button>
+    <div id='event-block' style="display:flex;flex-direction:column">
+        <div id='event'>
+            <div id='logout'>
+                <div style="float:left;width:50%;">Welcome {{user.name}}!</div>
+                <div style="float:right;width:50%;text-align:right">
+                    <button id="logout-btn" ng-click="logout()">Logout</button>
                 </div>
-        </div>
-        <div id="firstHeadline">
-            <h2>Create new channel:</h2>
-        </div>
-        <div style="flex-direction:row;padding-top:auto;padding-bottom:auto">
-            <div style="float:left;width: 80%">
-                <input id="event-new" type="text" ng-model='newEventTitle' placeholder="Type the name..." />
             </div>
-            <div style="">
-                <button id='event-btn' ng-click="addEvent()"><i class="icon-arrow-right"></i></button>
+            <div id="firstHeadline">
+                <h2>Create new channel:</h2>
+            </div>
+            <div style="flex-direction:row;padding-top:auto;padding-bottom:auto">
+                <div style="float:left;width: 80%">
+                    <input id="event-new" type="text" ng-model='newEventTitle' placeholder="Type the name..." />
+                </div>
+                <div style="">
+                    <button id='event-btn' ng-click="addEvent()"><i class="icon-arrow-right"></i></button>
+                </div>
+            </div>
+             <div class="firstHeadline" style="margin-top:10px">
+                <h2>Recent Channels:</h2>
             </div>
         </div>
-    </div>
-    <div class='all-events'>
-        <div class="secondHeadline">
-            <h2>Recent Channels:</h2>
-        </div>
-        <div class="recentChannels" ng-repeat="event in events">
-            <a ng-href="#/event/{{event.$id}}"> {{event.title}} by {{event.username}}</a>
+        <div class='all-events' id='all-events'>
+            <div class="recentChannels" ng-repeat="event in events">
+                <a ng-href="#/event/{{event.$id}}"> {{event.title}} by {{event.username}}</a>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    // $(document).ready(function() {
+    //     // set the top margin of the fixed add event element to the height of the logo
+    //     var logoPlacement =  $('.logo').height()*2
+    //     $('#event').css('margin-top',logoPlacement);
+    //     // set the top margin of the event list
+    //     var contentPlacement = $('#event').height() + logoPlacement*3;
+    //     $('#all-events').css('margin-top',contentPlacement);
+    // });
+    
+    var logoPlacement =  $('.logo').height()*2
+    $('#event').css('margin-top',logoPlacement);
+    // set the top margin of the event list
+    var contentPlacement;
+    if (/Mobi/.test(navigator.userAgent)) {
+    // mobile!
+        contentPlacement = $('#event').height() + logoPlacement + 15;
+    } else {
+        contentPlacement = $('#event').height() + logoPlacement*3;
+    }
+    
+    
+    $('#all-events').css('margin-top',contentPlacement);
+    // $(document).ready(function() { location.reload(true); });
+</script>
