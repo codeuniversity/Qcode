@@ -1,12 +1,33 @@
 <div ng-controller="eventPageController">
-    <a href="#/main">Back to main page</a>
-    <h1>{{event.title}}</h1>
-    <div>
-        <input type="text" ng-model="newQuestion" placeholder="Write a question..."/>
-        <button ng-click="addQuestion()">Add Question</button>
+    <div class="back">
+        <a class="goback" href="#/main">
+            <div class="ion-arrow-left-a">back</div>
+        </a>
     </div>
-    <div>
-        <div class='repeat-event' ng-repeat="question in event.questions">{{question.text}} <button ng-if="question.text" ng-click="question.votes = addVote(question.text, question.votes)">Vote ({{question.votes}})</button></button></div>
+    <div class="headline">
+        <h1>{{event.title}}</h1>
+    </div>  
+   <section class="mainpart">
+    <div ng-controller="eventPageController"> 
+        <div class="newQuestion1">
+            <div>
+                <input class="question" type="text" ng-model="newQuestion" placeholder="Type new question..."/>
+            </div>
+            <div class="add">
+                <button class="ion-arrow-right-a" ng-click="addQuestion()">enter</button>
+            </div>
+        </div>
+    </div >
+    
+    <div class="allQuestions">
+        <div class="border">
+            <div class="content" ng-repeat="question in event.questions"> {{question.text}} <button ng-if="question.text" ng-click="question.votes = addVote(question.text, question.votes)">Vote ({{question.votes}})</button></button></div>
+        </div> 
+    </div>    
         <div ng-if="!event.questions.length">There are no questions in this event</div>
-    </div>
+    
 </div>
+
+
+
+
