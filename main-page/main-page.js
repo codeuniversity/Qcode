@@ -22,7 +22,12 @@ angular.module('p3')
         $scope.newEventTitle = '';
     }
 
-    $scope.logout = function(){        
+    $scope.logout = function(){  
+        firebase.auth().signOut().then(function() {
+              // Sign-out successful.
+            }).catch(function(error) {
+              // An error happened.
+            });
         $location.path('login');
     }
 
