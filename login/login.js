@@ -2,7 +2,9 @@ angular.module('p3')
     .controller('loginPageController', function($scope, $routeParams, $location, eventService) {
     //     $rootScope.$on('$routeChangeError', function () {
     //         console.log($routeChangeError)
+    
     // });
+    $("#loading-text").text(" ")
     
        console.log($routeParams)
         
@@ -30,8 +32,10 @@ angular.module('p3')
             
         // NOTE: HAD TO ENABLE SET 3RD PARTY COOKIES IN CHROME
         firebase.auth().getRedirectResult().then(function(result) {
+            
             // console.log(result)
             if (result.credential) {
+                // $("#loading-text").text("Please wait...")
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 var token = result.credential.accessToken;
                 
@@ -50,6 +54,7 @@ angular.module('p3')
         });
 
         firebase.auth().onAuthStateChanged(function(user) {
+            $("#loading-text").text("Please wait...")
             if (user) {
               // User is signed in.
                 console.log(user)
@@ -62,7 +67,7 @@ angular.module('p3')
                 // $location.path('login').replace()
                 
             } else {
-                
+                // $("#loading-text").text("Sign in failed.")
                 // $location.path('login')
                 //no user is signed in
             }

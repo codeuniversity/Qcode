@@ -3,6 +3,15 @@ angular.module('p3')
 
     // $scope.user = userService.getLoggedInUser();
     $scope.user = firebase.auth().currentUser;
+    var send_to_user = {
+        "name": $scope.user.displayName,
+        "email": $scope.user.email,
+        "votes": []
+    }
+    
+    // eventService.getAllUsers()
+    
+    firebase.database().ref('/users/').set(send_to_user)
     
     $scope.newEventTitle = '';
     
@@ -29,7 +38,7 @@ angular.module('p3')
         }
         var newEvent = {       
             title: $scope.newEventTitle,
-            username: $scope.user.name,            
+            username: $scope.user.displayName,            
             questions: []
         };
  

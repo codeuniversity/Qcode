@@ -14,8 +14,8 @@ angular.module('p3')
         var keep_going = true;
         // limit each user to 1 vote per question
         // get the curent user; name of the current user via currentUser.name
-        var currentUser = userService.getLoggedInUser();
-        // var currentUser = $scope.user = firebase.auth().currentUser;
+        // var currentUser = userService.getLoggedInUser();
+        var currentUser = firebase.auth().currentUser;
         console.log(currentUser.votes)
         if($.inArray(q_text, currentUser.votes) == -1){
             currentUser.votes.push(q_text)
