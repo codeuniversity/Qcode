@@ -2,53 +2,52 @@
     <div class='logo'>
         <img id="main-logo" src="logo.png" alt="logo" style="width: 150px; height: auto;" />
     </div>
-    <div id="qs">
-        <div class="back" style="z-index:100">
-            <a class="goback" href="#/main">
-                <div class="ion-arrow-left-a">back</div>
-            </a>
-        </div>
-        <div id="firstHeadline">
-            <h2>{{event.title}} by {{event.username}}</h2>
-        </div>
-        <section class="mainpart">
-            <div ng-controller="eventPageController">
-
-                <div style="flex-direction:row;padding-top:auto;padding-bottom:auto">
-                    <div style="float:left;width: 80%">
-                        <input id="event-new" type="text" ng-model="newQuestion" placeholder="Type new question..." />
-                    </div>
-                    <div style="">
-                        <button id='event-btn' ng-click="addQuestion()"><i class="icon-arrow-right"></i></button>
-                    </div>
+    <div id="event-block" style="display:flex;flex-direction:column">
+        <div id='event'>
+            <div class="back">
+                <button ng-click="goBack()" id="back-button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
+            </div>
+            <div id="firstHeadline" style="margin-top:10px">
+                <h2>{{event.title}} by {{event.username}}</h2>
+            </div>
+            <div style="flex-direction:row;padding-top:auto;padding-bottom:auto">
+                <div style="float:left;width: 80%">
+                    <input id="event-new" type="text" ng-model="newQuestion" placeholder="Type new question..." />
                 </div>
-
+                <div>
+                    <button id='event-btn' ng-click="addQuestion()">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
             <div class="firstHeadline" style="margin-top:10px">
                 <h2>Recent questions:</h2>
             </div>
-    </div>
-
-    <div class='all-events' id='all-events'>
-        <div class="recentChannels" ng-repeat="question in event.questions"> {{question.text}} <button ng-if="question.text" ng-click="question.votes = addVote(question.text, question.votes)">Vote ({{question.votes}})</button></button>
         </div>
-        <div ng-if="!event.questions.length">There are no questions in this event</div>
 
+
+        <div class='all-events' id='all-events'>
+            <div ng-if="question.text" class="recentChannels" ng-repeat="question in event.questions"> {{question.text}}
+                <button class="vote-btns" ng-if="question.text" ng-click="question.votes = addVote(question.text, question.votes)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ({{question.votes}})</button>
+                </button>
+            </div>
+            <div ng-if="!event.questions.length">There are no questions in this event</div>
+        </div> 
     </div>
- 
- <script>
-  var logoPlacement =  $('.logo').height()*2
-    $('#goback').css('margin-top',logoPlacement);
-    // set the top margin of the event list
-    var contentPlacement;
-    if (/Mobi/.test(navigator.userAgent)) {
-    // mobile!
-        contentPlacement = $('#qs').height() + logoPlacement + 15;
-    } else {
-        contentPlacement = $('#qs').height() + logoPlacement+ 80;
-    }
-    
-    
-    $('#all-events').css('margin-top',contentPlacement);
-    // $(document).ready(function() { location.reload(true); });
-</script>
+
+    <script>
+        var logoPlacement = $('.logo').height() * 2
+        $('.back').css('margin-top', logoPlacement);
+        // set the top margin of the event list
+        var contentPlacement;
+        if (/Mobi/.test(navigator.userAgent)) {
+            // mobile!
+            contentPlacement = $('#event-block').height() + logoPlacement + 100;
+        } else {
+            contentPlacement = $('#event-block').height() + logoPlacement + 90;
+        }
+
+
+        $('#all-events').css('margin-top', contentPlacement);
+        // $(document).ready(function() { location.reload(true); });
+    </script>

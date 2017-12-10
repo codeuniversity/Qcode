@@ -9,6 +9,11 @@ angular.module('p3')
         var question_count = 0;
         console.log($scope.event)
 
+        $scope.goBack = function(){
+            $location.path('main-page');
+            if(!$scope.$$phase) $scope.$apply()
+        }
+
 
         $scope.addVote = function (q_text, curr_votes) {
             var keep_going = true;

@@ -47,6 +47,11 @@ angular.module('p3')
        return sorted_events
     });
     
+    $scope.goToEvent = function(path_desired){
+        console.log(path_desired)
+        $location.path('#/event/' + path_desired)
+        // if(!$scope.$$phase) $scope.$apply()
+    }
 
     $scope.addEvent = function(){  
         if(!$scope.newEventTitle){
@@ -54,7 +59,7 @@ angular.module('p3')
         }
         var newEvent = {       
             title: $scope.newEventTitle,
-            username: $scope.user.displayName,            
+            username: $scope.user.name,            
             questions: []
         };
  

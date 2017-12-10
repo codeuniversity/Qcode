@@ -8,7 +8,7 @@
             <div id='logout'>
                 <div style="float:left;width:50%;">Welcome {{user.name}}!</div>
                 <div style="float:right;width:50%;text-align:right">
-                    <button id="logout-btn" ng-click="logout()">Logout</button>
+                    <button id="logout-btn" ng-click="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
                 </div>
             </div>
             <div id="firstHeadline">
@@ -18,8 +18,8 @@
                 <div style="float:left;width: 80%">
                     <input id="event-new" type="text" ng-model='newEventTitle' placeholder="Type the name..." />
                 </div>
-                <div style="">
-                    <button id='event-btn' ng-click="addEvent()"><i class="icon-arrow-right"></i></button>
+                <div >
+                    <button id='event-btn' ng-click="addEvent()"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                 </div>
             </div>
             <div class="firstHeadline" style="margin-top:10px">
@@ -30,6 +30,9 @@
             <div class="recentChannels" ng-repeat="event in events">
                 <a ng-href="#/event/{{event.$id}}"> {{event.title}}</a>
             </div>
+            <!-- <button class="recentChannels" ng-repeat="event in events" ng-click="goToEvent('event.$id)">
+                    {{event.title}}
+            </button> -->
         </div>
     </div>
 </div>
@@ -51,7 +54,7 @@
     // mobile!
         contentPlacement = $('#event').height() + logoPlacement + 15;
     } else {
-        contentPlacement = $('#event').height() + logoPlacement+ 80;
+        contentPlacement = $('#event').height() + logoPlacement + 100;
     }
     
     
