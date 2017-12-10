@@ -4,14 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "ng": "ng",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "start": "node server.js",
-    "postinstall": "ng build --aot -prod"
-  },
+    "start": "node server.js"
+    },
   "engines": {
     "node": "6.11.4",
     "npm": "3.10.10"
