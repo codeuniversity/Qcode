@@ -1,8 +1,9 @@
 angular.module('p3')
 .controller('mainPageController', function($scope, $location, userService, eventService){
 
-    $scope.user = userService.getLoggedInUser();
-
+    // $scope.user = userService.getLoggedInUser();
+    $scope.user = firebase.auth().currentUser;
+    
     $scope.newEventTitle = '';
     
     var original_events = eventService.getAllEvents();
@@ -40,7 +41,12 @@ angular.module('p3')
         $scope.newEventTitle = '';
     }
 
-    $scope.logout = function(){        
+    $scope.logout = function(){  
+        firebase.auth().signOut().then(function() {
+              // Sign-out successful.
+            }).catch(function(error) {
+              // An error happened.
+            });
         $location.path('login');
     }
 

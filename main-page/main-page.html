@@ -1,12 +1,12 @@
 <!--this page will show up after signing in success-->
-<div ng-controller="mainPageController" class="main-page-area">
-    <div class='logo'>
-        <img id="main-logo" src="logo.png" alt="logo" style="width: 150px; height: auto;" />
-    </div>
+<div ng-controller="mainPageController"  class="main-page-area">
+  <div class='logo'>
+    <img id="main-logo" src="logo.png" alt="logo" style="width: 150px; height: auto;" />
+  </div>
     <div id='event-block' style="display:flex;flex-direction:column">
         <div id='event'>
             <div id='logout'>
-                <div style="float:left;width:50%;">Welcome {{user.name}}!</div>
+                <div style="float:left;width:50%;">Welcome {{user.displayName}}!</div>
                 <div style="float:right;width:50%;text-align:right">
                     <button id="logout-btn" ng-click="logout()">Logout</button>
                 </div>
