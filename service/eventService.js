@@ -25,6 +25,13 @@ angular.module("p3").service("eventService", function($firebaseArray, $firebaseO
         var ref = firebase.database().ref('/events');
         return $firebaseArray(ref);
     };
+    
+    this.getAllUsers = function() {
+        var ref = firebase.database().ref('/users');
+        var countRef = ref.parent.child('childCount');
+        console.log(countRef)
+        return $firebaseArray(ref);
+    }
 
     this.getEvent = function(eventId) {
         var ref = firebase.database().ref('/events/' + eventId);
