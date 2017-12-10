@@ -2,6 +2,7 @@ angular.module('p3')
 .controller('mainPageController', function($scope, $location, userService, eventService){
 
     // $scope.user = userService.getLoggedInUser();
+    
 
     // $scope.user = firebase.auth().currentUser;
     userService.getFBCurrUser().then(function(res){
@@ -11,6 +12,18 @@ angular.module('p3')
         // var new_user_id = res + 1;
         // userService.sendUserToFB(new_user_id)
     })
+
+    if(! $scope.user){
+        userService.getFBCurrUser().then(function(res){
+            console.log("CURRENT",res)
+            $scope.user = res;
+            if(!$scope.$$phase) $scope.$apply()
+            // result is reached
+            // var new_user_id = res + 1;
+            // userService.sendUserToFB(new_user_id)
+        })
+    }
+
     // userService.printUser()
     // push the current user to the userService
     // var send_to_user = {
