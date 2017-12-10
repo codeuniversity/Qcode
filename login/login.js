@@ -1,5 +1,10 @@
 angular.module('p3')
-    .controller('loginPageController', function($scope, $location, eventService) {
+    .controller('loginPageController', function($scope, $routeParams, $location, eventService) {
+    //     $rootScope.$on('$routeChangeError', function () {
+    //         console.log($routeChangeError)
+    // });
+    
+       console.log($routeParams)
         
        var user = firebase.auth().currentUser;
        console.log("START")
@@ -49,12 +54,16 @@ angular.module('p3')
               // User is signed in.
                 console.log(user)
                 console.log(user.displayName, " is signed in")
-                $location.path('main-page')
+                // $location.url('https://project14-3-ekhattar.c9users.io/#/main-page')
+                $location.path('main-page');
+                if(!$scope.$$phase) $scope.$apply()
                 
                 
                 // $location.path('login').replace()
                 
             } else {
+                
+                // $location.path('login')
                 //no user is signed in
             }
         });
