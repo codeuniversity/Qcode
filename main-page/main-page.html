@@ -1,6 +1,6 @@
 <!--this page will show up after signing in success-->
 <div ng-controller="mainPageController">
-     <div>Welcome {{user.name}}! <button ng-click="logout()">Logout</button></div>
+     <div>Welcome {{user.displayName}}! <button ng-click="logout()">Logout</button></div>
     <h2>All Events and Workshops</h2>
     <div>
         <input type="text" ng-model='newEventTitle' placeholder="New event title..."/>

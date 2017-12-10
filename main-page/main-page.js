@@ -1,8 +1,9 @@
 angular.module('p3')
 .controller('mainPageController', function($scope, $location, userService, eventService){
 
-    $scope.user = userService.getLoggedInUser();
-
+    // $scope.user = userService.getLoggedInUser();
+    $scope.user = firebase.auth().currentUser;
+    
     $scope.newEventTitle = '';
 
     $scope.events = eventService.getAllEvents();
