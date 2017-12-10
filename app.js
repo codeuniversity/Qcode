@@ -7,6 +7,9 @@ angular.module('p3', ['ngRoute', 'firebase'])
             when('/login', {
                 templateUrl: 'login/login.html'
             }).
+            when('/load', {
+                templateUrl: 'login/loading.html'
+            }).
             when('/main-page', {
                 templateUrl: 'main-page/main-page.html'
             }).

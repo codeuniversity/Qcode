@@ -4,7 +4,7 @@ angular.module('p3')
     //         console.log($routeChangeError)
     
     // });
-    $("#loading-text").text(" ")
+    // $("#loading-text").text(" ")
     userService.printUser();
     
        console.log($routeParams)
@@ -26,6 +26,7 @@ angular.module('p3')
             } else {
                  console.log("Need to sign in user")
                 firebase.auth().signInWithRedirect(provider);
+                $location.path('load');
             }
             
         };
@@ -61,7 +62,7 @@ angular.module('p3')
         });
 
         firebase.auth().onAuthStateChanged(function(user) {
-            $("#loading-text").text("Please wait...")
+            // $("#loading-text").text("Please wait...")
             if (user) {
               // User is signed in.
                 console.log(user)
