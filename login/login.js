@@ -1,10 +1,11 @@
 angular.module('p3')
-    .controller('loginPageController', function($scope, $routeParams, $location, eventService) {
+    .controller('loginPageController', function($scope, $routeParams, $location, eventService, userService) {
     //     $rootScope.$on('$routeChangeError', function () {
     //         console.log($routeChangeError)
     
     // });
     $("#loading-text").text(" ")
+    userService.printUser();
     
        console.log($routeParams)
         
@@ -43,6 +44,12 @@ angular.module('p3')
             // The signed-in user info.
             user = result.user;
             $scope.user.name = user.displayName
+            var send_to_user = {
+                "name": user.displayName,
+                "email": user.email,
+                "votes": []
+            }
+            userService.updateLoggedInUser(send_to_user);
         }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -59,6 +66,15 @@ angular.module('p3')
               // User is signed in.
                 console.log(user)
                 console.log(user.displayName, " is signed in")
+                var send_to_user = {
+                    "name": user.displayName,
+                    "email": user.email,
+                    "votes": []
+                }
+                userService.updateLoggedInUser(send_to_user);
+                firebase.database().ref('/current/' ).set(send_to_user)
+                // userService.printUser();
+                console.log("---------")
                 // $location.url('https://project14-3-ekhattar.c9users.io/#/main-page')
                 $location.path('main-page');
                 if(!$scope.$$phase) $scope.$apply()

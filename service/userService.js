@@ -24,7 +24,7 @@ angular.module('p3').service('userService', function(){
           });
     };
 
-    var user_count;
+    var user_count = 0;
 
     this.getUserCount = function(){
         var num_users;
@@ -35,6 +35,18 @@ angular.module('p3').service('userService', function(){
                 console.log("# Existing users: ",num_users);
                 user_count = num_users;
                 resolve(num_users)
+              });
+        })
+    }
+
+    this.getFBCurrUser = function(){
+        return new Promise((resolve, reject) => {
+            firebase.database().ref('/current/').once('value').then(function(snapshot) {
+                var current = (snapshot.val()) || 'UNDEFINED';
+                // num_users = Object.keys(users).length
+                // console.log("# Existing users: ",num_users);
+                // user_count = num_users;
+                resolve(current)
               });
         })
     }
