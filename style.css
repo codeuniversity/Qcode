@@ -203,6 +203,20 @@ input {
     flex-direction: row;
 }
 
+.recentQuestions {
+    margin-top:5px;
+    margin-left: 0px;
+    padding: 5px 28px 10px 28px;
+    float: left;
+    text-align: left;
+    padding: 15px 30px 15px 20px;
+    border: 2px solid rgb(95, 190, 172);
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 5px;
+    flex-direction: row;
+}
+
 
 #logout {
     /*float: top;*/

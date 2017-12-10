@@ -27,7 +27,7 @@
 
 
         <div class='all-events' id='all-events'>
-            <div ng-if="question.text" class="recentChannels" ng-repeat="question in event.questions"> {{question.text}}
+            <div ng-if="question.text" class="recentQuestions" ng-repeat="question in event.questions"> {{question.text}}
                 <button class="vote-btns" ng-if="question.text" ng-click="question.votes = addVote(question.text, question.votes)"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ({{question.votes}})</button>
                 </button>
             </div>

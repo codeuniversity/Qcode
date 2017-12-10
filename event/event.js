@@ -1,13 +1,95 @@
 angular.module('p3')
     .controller('eventPageController', function ($scope, $location, $routeParams, eventService, userService) {
         // var eventId = parseInt($routeParams.eventId);
+        $scope.child = {}
         var eventId = $routeParams.eventId;
         // console.log($routeParams)
+        // eventService.getEventWithSortedQuestions(eventId);
 
         $scope.newQuestion = '';
         $scope.event = eventService.getEvent(eventId);
+
+        eventService.getEventTitle(eventId).then(function(res){
+            $scope.event.title = res;
+        })
+
+        eventService.getEventUser(eventId).then(function(res){
+            $scope.event.username = res;
+        })
+
+        eventService.getEventTitle(eventId).then(function(title){
+            console.log("Got scope title")
+            $scope.event.title = title;
+            eventService.getEventUser(eventId).then(function(name){
+                $scope.event.username = name;
+                eventService.getEventWithSortedQuestions(eventId).then(function(questions){
+                    var new_event = {
+                        "title": $scope.event.title,
+                        "username":  $scope.event.username,
+                        "questions": questions
+                    }  
+                    // $scope.event.questions = questions;
+                    console.log(new_event)
+                    eventService.sendEventToFB(eventId, new_event)
+                })
+            })
+        })
+
+
+
+        // $scope.event.title = eventService.getEventTitle(eventId);
+   
+        // $scope.event.username = eventService.getEventUser(eventId);
+
+        // $scope.event["questions"] = [];
+        // $scope.event.questions["text"] = "";
+        // // $scope.event.questions.text = "";
+        // $scope.event.questions = [];
+        // eventService.getEventWithSortedQuestions(eventId).then(function(questions){
+        //     console.log("SORTED QUESTIONS",res)
+        //     eventService.getEventTitle(eventId).then(function(title){
+        //         $scope.event.title = title;
+        //         eventService.getEventUser(eventId).then(function(username){
+        //             $scope.event.username = username;
+        //             var new_event = {
+        //                 "title": $scope.event.title,
+        //                 "username":  $scope.event.username,
+        //                 "questions": questions
+        //             }
+        //             console.log(new_event)
+        //             eventService.sendEventToFB(eventId, new_event)
+        //         })
+        //     })
+        //     // console.log($scope.event.title)
+        //     // var new_event = {
+        //     //     "title": $scope.event.title,
+        //     //     "username":  $scope.event.username,
+        //     //     "questions": res
+        //     // }
+        //     // console.log(new_event)
+        //     // var ref = firebase.database().ref('/events/' + eventId).child("questions");
+        //     // ref.set(res);
+        //     // idea: overwrite in FB
+        //     // eventService.sendEventToFB(eventId, res)
+        //     // $scope.event.questions = res;
+        //     // console.log($scope.event.questions)
+        //     // $scope.$apply()
+        //     // if(!$scope.$$phase) $scope.$apply()
+        // })
         var question_count = 0;
         console.log($scope.event)
+        // if($scope.event){
+        //     console.log("EXISTS")
+        //     eventService.getEventWithSortedQuestions(eventId).then(function(res){
+        //         console.log("GOT RESPONSE")
+        //         var new_event = {
+        //             "title": $scope.event.title,
+        //             "username":  $scope.event.username,
+        //             "questions": res
+        //         }  
+        //         console.log(new_event)
+        //     })
+        // }
 
         $scope.goBack = function(){
             $location.path('main-page');
@@ -16,6 +98,8 @@ angular.module('p3')
 
 
         $scope.addVote = function (q_text, curr_votes) {
+            // $scope.event.title = eventService.getEventTitle(eventId);
+            // $scope.event.username = eventService.getEventUser(eventId);
             var keep_going = true;
             // limit each user to 1 vote per question
             // get the curent user; name of the current user via currentUser.name
@@ -71,6 +155,8 @@ angular.module('p3')
         }
 
         $scope.addQuestion = function () {
+            // $scope.event.title = eventService.getEventTitle(eventId);
+            // $scope.event.username = eventService.getEventUser(eventId);
             console.log("Adding a question!")
             if (!$scope.newQuestion) {
                 return false;
