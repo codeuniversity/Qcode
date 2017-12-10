@@ -3,14 +3,18 @@ angular.module('p3')
 
     // $scope.user = userService.getLoggedInUser();
     $scope.user = firebase.auth().currentUser;
+
+    // get existing users
+    var fb_users = eventService.getAllUsers();
+
+    console.log(fb_users)
+
     var send_to_user = {
         "name": $scope.user.displayName,
         "email": $scope.user.email,
         "votes": []
     }
-    
-    // eventService.getAllUsers()
-    
+        
     firebase.database().ref('/users/').set(send_to_user)
     
     $scope.newEventTitle = '';

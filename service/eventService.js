@@ -14,14 +14,6 @@ angular.module("p3").service("eventService", function($firebaseArray, $firebaseO
     }
     // firebase.initializeApp(config);
     var database = firebase.database();
-    
-
-    // this.getAuthInstance = function(){
-    //      var provider = new firebase.auth.GoogleAuthProvider();
-    //      return provider;
-    // }
-
-    
 
     this.getAllEvents = function() {
         var ref = firebase.database().ref('/events');
@@ -30,8 +22,8 @@ angular.module("p3").service("eventService", function($firebaseArray, $firebaseO
     
     this.getAllUsers = function() {
         var ref = firebase.database().ref('/users');
-        var countRef = ref.parent.child('childCount');
-        console.log(countRef)
+        // var countRef = ref.parent.child('childCount');
+        // console.log(countRef)
         return $firebaseArray(ref);
     }
 
