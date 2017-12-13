@@ -14,6 +14,8 @@ angular.module('p3')
                     "votes": []
                 }
                 userService.updateLoggedInUser(send_to_user);
+                if (!$scope.$$phase) $scope.$apply()
+                // window.location.reload()
             } else {
                 // No user is signed in.
                 console.log("USER IS NOT SIGNED IN")
@@ -112,6 +114,8 @@ angular.module('p3')
                 // An error happened.
             });
             $location.path('login');
-        }
+        };
+
+        
 
     });
