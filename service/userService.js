@@ -51,6 +51,22 @@ angular.module('p3').service('userService', function(){
         })
     }
 
+     this.getUserAlt =  function (){
+         return new Promise((resolve, reject) => {
+            let alt_user = firebase.auth().currentUser;
+            console.log(alt_user)
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                  // User is signed in.
+                  console.log("testing    ", user.email)
+                  resolve(user)
+                } else {
+                  reject("UNDEFINED")
+                }
+              });
+         })
+    }
+
     this.getNewId = function(){
         return user_count + 1;
     }

@@ -93,7 +93,29 @@ angular.module('p3')
 
         $scope.goBack = function(){
             $location.path('main-page');
-            if(!$scope.$$phase) $scope.$apply()
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    $scope.user = user;
+                    console.log("FB auth result - user email    ", user.email)
+                    $scope.user["name"] = user.displayName;
+                    console.log("FB auth result - user name    ", user.displayName)
+                    var send_to_user = {
+                        "name": user.displayName,
+                        "email": user.email,
+                        "votes": []
+                    }
+                    userService.updateLoggedInUser(send_to_user);
+                    if(!$scope.$$phase) $scope.$apply()
+                    window.location.reload()
+                } else {
+                    // No user is signed in.
+                    // console.log("USER IS NOT SIGNED IN")
+                    // // redirect to login
+                    // $location.path('login')
+                    // if (!$scope.$$phase) $scope.$apply()
+                }
+            });
+            
         }
 
 
